@@ -18,7 +18,7 @@ GO_SOURCE_URLS:=https://dl.google.com/go/ \
 
 PKG_SOURCE:=go$(PKG_VERSION).src.tar.gz
 PKG_SOURCE_URL:=$(GO_SOURCE_URLS)
-PKG_HASH:=6faf74046b5e24c2c0b46e78571cca4d65e1b89819da1089e53ea57539c63491
+PKG_HASH:=2aa5f088cbb332e73fc3def546800616b38d3bfe6b8713b8a6404060f22503e8
 
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
@@ -180,6 +180,8 @@ endef
 # when go compiles a program, it will use the host std lib
 # so remove it now and force go to rebuild std for target later
 define Host/Install
+	$(call Host/Uninstall)
+
 	$(call GoCompiler/Host/Install/Bin,)
 	$(call GoCompiler/Host/Install/Src,)
 
