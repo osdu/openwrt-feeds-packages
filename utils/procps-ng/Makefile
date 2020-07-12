@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=procps-ng
 PKG_VERSION:=3.3.11
-PKG_RELEASE:=4
+PKG_RELEASE:=20.1
 PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=COPYING COPYING.LIB
 
@@ -77,7 +77,7 @@ define GenPlugin
    DEPENDS:=procps-ng
    TITLE:=Applet $(2) from the procps-ng package
    DEFAULT:=y
-   ALTERNATIVES:=200:$(3)/$(2):$(3)/$(1)
+   ALTERNATIVES:=200:$(3)/$(2):/userdisk/miwifi$(3)/$(1)
  endef
 
  define Package/$(1)/description
