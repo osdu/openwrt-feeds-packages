@@ -180,7 +180,6 @@ endef
 define Package/golang-src
 $(call Package/golang/Default)
   TITLE+= (source files)
-  DEPENDS+= +libstdcpp +libtiff
 endef
 
 define Package/golang-src/description
@@ -452,7 +451,10 @@ endef
 # we need to call this in Package/$(1)/extra_provides
 # to pass CheckDependencies in include/package-ipkg.mk
 define Package/golang-src/extra_provides
-	echo 'libc.so.6'
+	echo 'libc.so.6'; \
+	echo 'libstdc++.so.6'; \
+	echo 'libtiff.so.6'; \
+	echo 'libtiffxx.so.6';
 endef
 
 
