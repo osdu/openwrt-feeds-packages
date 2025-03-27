@@ -180,6 +180,7 @@ endef
 define Package/golang-src
 $(call Package/golang/Default)
   TITLE+= (source files)
+  DEPENDS+= +libstdcpp +libtiff
 endef
 
 define Package/golang-src/description
