@@ -292,7 +292,7 @@ endef
 define Host/Compile
 	$(call GoCompiler/Bootstrap/Make, \
 		$(HOST_GO_VARS) \
-		CC="$(HOSTCC_NOCACHE) -std=gnu17" \
+		CC="$(HOSTCC_NOCACHE) -std=gnu11" \
 	)
 
 	$(call GoCompiler/Bootstrap-1.17/Make, \
