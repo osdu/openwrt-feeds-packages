@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 GO_VERSION_MAJOR_MINOR:=1.24
-GO_VERSION_PATCH:=3
+GO_VERSION_PATCH:=4
 
 PKG_NAME:=golang
 PKG_VERSION:=$(GO_VERSION_MAJOR_MINOR)$(if $(GO_VERSION_PATCH),.$(GO_VERSION_PATCH))
@@ -21,7 +21,7 @@ GO_SOURCE_URLS:=https://dl.google.com/go/ \
 
 PKG_SOURCE:=go$(PKG_VERSION).src.tar.gz
 PKG_SOURCE_URL:=$(GO_SOURCE_URLS)
-PKG_HASH:=229c08b600b1446798109fae1f569228102c8473caba8104b6418cb5bc032878
+PKG_HASH:=5a86a83a31f9fa81490b8c5420ac384fd3d95a3e71fba665c7b3f95d1dfef2b4
 
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
@@ -107,6 +107,7 @@ BOOTSTRAP_1_22_SOURCE_URL:=$(GO_SOURCE_URLS)
 BOOTSTRAP_1_22_HASH:=9e48d99d519882579917d8189c17e98c373ce25abaebb98772e2927088992a51
 
 BOOTSTRAP_1_22_BUILD_DIR:=$(HOST_BUILD_DIR)/.go_bootstrap_1.22
+
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
 include ../golang-compiler.mk
@@ -291,6 +292,7 @@ endef
 define Host/Compile
 	$(call GoCompiler/Bootstrap/Make, \
 		$(HOST_GO_VARS) \
+		CC="$(HOSTCC_NOCACHE) -std=gnu17" \
 	)
 
 	$(call GoCompiler/Bootstrap-1.17/Make, \
